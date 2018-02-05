@@ -5,5 +5,5 @@ exports.seed = function(knex, Promise) {
       knex('meals').insert([{ name: "Breakfast" }, { name: "Lunch" },
                             { name: "Dinner" }, { name: "Snacks" }])
     ])
-  }
+  })
 }

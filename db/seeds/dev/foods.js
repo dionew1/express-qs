@@ -11,5 +11,5 @@ exports.seed = function(knex, Promise) {
       { name: "Sandwich", calories:  500 }
       ])
     ])
-  }
+  })
 }
