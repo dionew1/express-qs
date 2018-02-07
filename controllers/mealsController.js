@@ -13,16 +13,16 @@ const  show = function(req, res, next) {
     })
 }
 
-// const index = function(req, res, next) {
-//   Meal.all()
-//     .then(function(meals) {
-//       if(!meals){
-//         return res.sendStatus(404)
-//       } else {
-//         res.json(meals)
-//       }
-//     })
-// }
+const index = function(req, res, next) {
+  Meal.all()
+    .then(function(meals) {
+      if(!meals){
+        return res.sendStatus(404)
+      } else {
+        res.json(meals)
+      }
+    })
+}
 
 const remove = function(req, res, next) {
   let mealId = req.params.meal_id
@@ -52,4 +52,4 @@ const create = function(req, res, next) {
 }
 
 
-module.exports = { create, remove, show }
+module.exports = { create, remove, show, index }
