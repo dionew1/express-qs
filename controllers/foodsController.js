@@ -37,16 +37,17 @@ const remove = function(req, res, next) {
   })
 }
 
-// const create = function(req, res, next) {
-//   let foodInfo = req.body.food
-//   Food.new(foodInfo)
-//     .then(function(food) {
-//       if(!food){
-//         return res.sendStatus(404)
-//       } else {
-//         res.json(food)
-//       }
-//     })
+const create = function(req, res, next) {
+  let foodInfo = req.body.food
+  Food.new(foodInfo)
+    .then(function(food) {
+      if(!food){
+        return res.sendStatus(404)
+      } else {
+        res.json(food)
+      }
+    })
+}
 
 
-module.exports = { show, index, remove}
+module.exports = { show, index, remove, create}

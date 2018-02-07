@@ -21,12 +21,13 @@ var Food = {
     return database('foods').where('id', id).del()
   },
 
-// Issue with foodData being undefined?!?!? Why?
-  // new: function(foodData) {
-  //   return database('foods').insert(foodData)
-  //
-  // }
-
+  new: function(foodData) {
+    return database('foods').insert(foodData, ['id', 'name', 'calories'])
+    .then(function(food) {
+      console.log(food);
+      return food
+    })
+  }
 
 }
 
