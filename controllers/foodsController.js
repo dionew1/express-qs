@@ -49,5 +49,18 @@ const create = function(req, res, next) {
     })
 }
 
+const update = function(req, res, next) {
+  let id = req.params.id
+  let foodInfo = req.body.food
+  Food.edit(id, foodInfo)
+    .then(function(food) {
+      if(!food){
+        return res.sendStatus(404)
+      } else {
+        res.json(food[0])
+      }
+    })
+}
 
-module.exports = { show, index, remove, create}
+
+module.exports = { show, index, remove, create, update}

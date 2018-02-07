@@ -3,11 +3,11 @@ const express = require('express');
 const router = express.Router();
 const configuration = require('../../knexfile')[environment]
 const foodsController = require('../../controllers/foodsController')
+const mealsController = require('../../controllers/mealsController')
 
-router.get('/', foodsController.index)
-router.post('/', foodsController.create)
-router.patch('/:id', foodsController.update)
-router.get('/:id', foodsController.show)
-router.delete('/:id', foodsController.remove)
+router.get('/', mealsController.index)
+// router.post('/', mealsController.create)
+// router.get('/:meal_id/foods', mealsController.show)
+// router.delete('/:meal_id/foods/:id', mealsController.remove)
 
 module.exports = router
