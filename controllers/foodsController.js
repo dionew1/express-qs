@@ -24,16 +24,29 @@ const index = function(req, res, next) {
     })
 }
 
-const create = function(req, res, next) {
-  let foodInfo = req.body.food
-  Food.new(foodInfo)
-    .then(function(food) {
-      if(!food){
-        return res.sendStatus(404)
-      } else {
-        res.json(food)
-      }
-    })
+const remove = function(req, res, next) {
+  let id = req.params.id
+
+  Food.remove(id)
+  .then(function(food) {
+    if(!food){
+      return res.sendStatus(404)
+    } else {
+      res.sendStatus(202)
+    }
+  })
 }
 
-module.exports = { show, index, create }
+// const create = function(req, res, next) {
+//   let foodInfo = req.body.food
+//   Food.new(foodInfo)
+//     .then(function(food) {
+//       if(!food){
+//         return res.sendStatus(404)
+//       } else {
+//         res.json(food)
+//       }
+//     })
+
+
+module.exports = { show, index, remove}

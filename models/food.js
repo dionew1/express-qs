@@ -17,12 +17,17 @@ var Food = {
       })
   },
 
-  new: function(foodData) {
-    return database('foods').insert(foodData)
-    .then(function(food) {
-      return food
-    })
-  }
+  remove: function(id) {
+    return database('foods').where('id', id).del()
+  },
+
+// Issue with foodData being undefined?!?!? Why?
+  // new: function(foodData) {
+  //   return database('foods').insert(foodData)
+  //
+  // }
+
+
 }
 
 module.exports = Food
