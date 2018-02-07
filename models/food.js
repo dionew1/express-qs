@@ -24,7 +24,13 @@ var Food = {
   new: function(foodData) {
     return database('foods').insert(foodData, ['id', 'name', 'calories'])
     .then(function(food) {
-      console.log(food);
+      return food
+    })
+  },
+
+  edit: function(id, foodData)  {
+    return database('foods').where('id', id).update(foodData, ['id', 'name', 'calories'])
+    .then(function(food) {
       return food
     })
   }
