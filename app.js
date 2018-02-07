@@ -9,6 +9,7 @@ var sassMiddleware = require('node-sass-middleware');
 var index = require('./routes/index');
 var users = require('./routes/users');
 var apiFoods = require('./routes/api/foods')
+var apiMeals = require('./routes/api/meals')
 
 var app = express();
 
@@ -33,6 +34,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/users', users);
 app.use('/api/foods', apiFoods)
+app.use('/api/meals', apiMeals)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
