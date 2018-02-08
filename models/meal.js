@@ -13,29 +13,34 @@ var Meal = {
   },
 
   all: function() {
-      return database('meals').pluck('id')
-        .then(function(ids) {
-          getMealList(ids)
-        })
-        .then(function(response)  {
-        })
+    return database('meals').pluck('id')
+            .then(function(ids) {
+              getMealList(ids)
+            })
+            .then(function(response)  {
+              // console.log(response)
+            })
   },
 
   remove: function(mealId, foodId) {
     return database('meal_foods').where('meal_id', mealId).andWhere('food_id', foodId).del()
   },
-
 }
 
 const getMealList = (mealIds) =>  {
-  let mealList = []
+  let mealPromises = []
   for (let i=0; i < mealIds.length; i++) {
     getMeal(mealIds[i])
     .then(function(response)  {
-      console.log(`trip ${i}`, response)
+      mealPromises.push(response)
+      // console.log(mealPromises)
     })
   }
-  console.log(mealList)
+  Promise.all(mealPromises)
+  .then(function(response)  {
+    console.log(response)
+  })
+  // console.log(mealList)
 }
 
 const getMeal = (mealId) => {
