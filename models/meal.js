@@ -15,10 +15,7 @@ var Meal = {
   all: function() {
     return database('meals').pluck('id')
             .then(function(ids) {
-              getMealList(ids)
-            })
-            .then(function(response)  {
-              // console.log(response)
+              return getMealList(ids)
             })
   },
 
@@ -28,19 +25,13 @@ var Meal = {
 }
 
 const getMealList = (mealIds) =>  {
-  let mealPromises = []
-  for (let i=0; i < mealIds.length; i++) {
-    getMeal(mealIds[i])
-    .then(function(response)  {
-      mealPromises.push(response)
-      // console.log(mealPromises)
-    })
-  }
-  Promise.all(mealPromises)
-  .then(function(response)  {
-    console.log(response)
+  var promises = mealIds.map(id => {
+    return getMeal(id)
   })
-  // console.log(mealList)
+  return Promise.all(promises)
+  .then(response => {
+    return response
+  })
 }
 
 const getMeal = (mealId) => {
