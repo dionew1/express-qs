@@ -10,8 +10,10 @@ var cors = require('cors');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
-var apiFoods = require('./routes/api/v1/foods');
-var apiMeals = require('./routes/api/v1/meals');
+
+var apiFoods = require('./routes/api/v1/foods')
+var apiMeals = require('./routes/api/v1/meals')
+
 
 var app = express();
 
