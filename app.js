@@ -18,9 +18,6 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-app.listen((80, function () {
-  console.log('CORS-enabled web server listening on port 80')
-})
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -36,6 +33,9 @@ app.use(sassMiddleware({
   sourceMap: true
 }));
 app.use(express.static(path.join(__dirname, 'public')));
+app.listen((80, function () {
+  console.log('CORS-enabled web server listening on port 80')
+})
 
 app.use('/', index);
 app.use('/users', users);
