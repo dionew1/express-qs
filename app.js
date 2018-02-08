@@ -33,9 +33,6 @@ app.use(sassMiddleware({
   sourceMap: true
 }));
 app.use(express.static(path.join(__dirname, 'public')));
-app.listen((80, function () {
-  console.log('CORS-enabled web server listening on port 80')
-})
 
 app.use('/', index);
 app.use('/users', users);
