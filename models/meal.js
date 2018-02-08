@@ -28,13 +28,12 @@ var Meal = {
 }
 
 const getMealList = (mealIds) =>  {
-  var mealList = []
-  for (var i=0; i < mealIds.length; i++) {
+  let mealList = []
+  for (let i=0; i < mealIds.length; i++) {
     getMeal(mealIds[i])
     .then(function(response)  {
-      response.json()
+      console.log(`trip ${i}`, response)
     })
-    .then(meals => console.log(meals))
   }
   console.log(mealList)
 }
