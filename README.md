@@ -71,13 +71,6 @@ This creates a new record in the MealFoods table to establish the relationship b
 DELETE /api/v1/meals/:meal_id/foods/:id - removes the food with :id from the meal with :meal_id
 This deletes the existing record in the MealFoods table that creates the relationship between this food and meal. If the meal/food cannot be found, a 404 will be returned.
 
-
-## Tests
-
-Run tests with npm test
-Run all tests with npm test test/*
-Specify a test with npm test test/<test-name>.js
-
 ## Contributing
 
 This project welcomes contributions from the community. Contributions are
