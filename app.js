@@ -8,8 +8,8 @@ var sassMiddleware = require('node-sass-middleware');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
-var apiFoods = require('./routes/api/foods')
-var apiMeals = require('./routes/api/meals')
+var apiFoods = require('./routes/api/v1/foods')
+var apiMeals = require('./routes/api/v1/meals')
 
 var app = express();
 
