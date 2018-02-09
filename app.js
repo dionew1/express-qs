@@ -24,7 +24,7 @@ app.set('view engine', 'ejs');
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(cors({
-  allowedOrigins: [ 'aziobrow.github.io/quantified-self/' ]
+  allowedOrigins: [ 'aziobrow.github.io' ]
 }))
 app.use(logger('dev'));
 app.use(bodyParser.json());
