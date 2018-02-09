@@ -24,7 +24,7 @@ app.set('view engine', 'ejs');
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(cors({
-  origin: 'https://enigmatic-ravine-22013.herokuapp.com'
+  origin: 'https://aziobrow.github.io/quantified-self/'
 }));
 app.use(logger('dev'));
 app.use(bodyParser.json());
