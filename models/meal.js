@@ -1,8 +1,9 @@
 const environment   = process.env.NODE_ENV || 'development'
 const configuration = require('../knexfile')[environment]
 const database      = require('knex')(configuration)
+var pry = require('pryjs');
 
-var Meal = {
+const Meal = {
 
   new: function(mealId, foodId) {
     return database('meal_foods').insert({'meal_id': mealId, 'food_id': foodId})
@@ -43,6 +44,7 @@ const getMeal = (mealId) => {
     .select('meals.name as mealName', 'meals.id as mealId')
     .where('meals.id', mealId)
     .then(function(foods) {
+      eval(pry.it);
       formattedResponse.id = foods[0].mealId
       formattedResponse.name = foods[0].mealName
       let foodList = []
