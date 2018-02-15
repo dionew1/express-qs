@@ -2,7 +2,7 @@ const environment   = process.env.NODE_ENV || 'development'
 const configuration = require('../knexfile')[environment]
 const database      = require('knex')(configuration)
 
-var Meal = {
+let Meal = {
 
   new: function(mealId, foodId) {
     return database('meal_foods').insert({'meal_id': mealId, 'food_id': foodId})
@@ -43,17 +43,19 @@ const getMeal = (mealId) => {
     .select('meals.name as mealName', 'meals.id as mealId')
     .where('meals.id', mealId)
     .then(function(foods) {
-      formattedResponse.id = foods[0].mealId
-      formattedResponse.name = foods[0].mealName
-      let foodList = []
-      for (let i=0; i<foods.length; i++) {
-        let foodInfo = {}
-        foodInfo.id = foods[i].id
-        foodInfo.name = foods[i].name
-        foodInfo.calories = foods[i].calories
-        foodList.push(foodInfo)
+      if(foods.length != 0) {
+        formattedResponse.id = foods[0].mealId
+        formattedResponse.name = foods[0].mealName
+        let foodList = []
+        for (let i=0; i<foods.length; i++) {
+          let foodInfo = {}
+          foodInfo.id = foods[i].id
+          foodInfo.name = foods[i].name
+          foodInfo.calories = foods[i].calories
+          foodList.push(foodInfo)
+        }
+        formattedResponse.foods = foodList
       }
-      formattedResponse.foods = foodList
       return formattedResponse
     })
 }
