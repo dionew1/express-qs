@@ -13,9 +13,9 @@ var Meal = {
   },
 
   all: function() {
-    return database('meals').pluck('id')
-            .then(function(ids) {
-              return getMealList(ids)
+    return database('meals').select('*')
+            .then(function(meals) {
+              return meals
             })
   },
 
