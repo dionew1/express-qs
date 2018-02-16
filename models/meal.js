@@ -45,8 +45,12 @@ const getMeal = (mealId) => {
           foodList.push(foodInfo)
         }
         formattedResponse.foods = foodList
+        return formattedResponse
       } else {
-        return database(meals).where('meal_id', mealId)
+        return database('meals').where('id', mealId)
+        .then(function(meal) {
+          return meal[0]
+        })
       }
     })
 }
