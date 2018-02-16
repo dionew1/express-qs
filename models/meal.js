@@ -24,16 +24,6 @@ let Meal = {
   },
 }
 
-const getMealList = (mealIds) =>  {
-  var promises = mealIds.map(id => {
-    return getMeal(id)
-  })
-  return Promise.all(promises)
-  .then(response => {
-    return response
-  })
-}
-
 const getMeal = (mealId) => {
   let formattedResponse = {}
   return database('meal_foods')
@@ -55,8 +45,9 @@ const getMeal = (mealId) => {
           foodList.push(foodInfo)
         }
         formattedResponse.foods = foodList
+      } else {
+        return database(meals).where('meal_id', mealId)
       }
-      return formattedResponse
     })
 }
 
